@@ -1,0 +1,440 @@
+last_checkpoint_saving_time: 
+1564996353.1160612
+improve_steps: 
+<rl_coach.core_types.TrainingSteps object at 0x7f329386d7f0>
+env_params: 
+"GymVectorEnvironment" {
+    "additional_simulator_parameters": {},
+    "custom_reward_threshold": null,
+    "default_input_filter": {
+        "_observation_filters": {
+            "observation": {
+                "to_grayscale": {
+                    "name": null,
+                    "supports_batching": false,
+                    "__class__": "ObservationRGBToYFilter"
+                },
+                "to_uint8": {
+                    "input_high": 255,
+                    "input_low": 0,
+                    "name": null,
+                    "supports_batching": false,
+                    "__class__": "ObservationToUInt8Filter"
+                },
+                "stacking": {
+                    "name": null,
+                    "stack": {},
+                    "stack_size": 1,
+                    "stacking_axis": -1,
+                    "supports_batching": false,
+                    "__class__": "ObservationStackingFilter"
+                }
+            }
+        },
+        "_reward_filters": {},
+        "i_am_a_reference_filter": true,
+        "name": null,
+        "__class__": "InputFilter"
+    },
+    "default_output_filter": {
+        "_action_filters": {},
+        "i_am_a_reference_filter": false,
+        "name": null,
+        "__class__": "NoOutputFilter"
+    },
+    "experiment_path": "/opt/ml/model",
+    "frame_skip": 1,
+    "human_control": false,
+    "level": "DeepRacerRacetrackCustomActionSpaceEnv-v0",
+    "max_over_num_frames": 1,
+    "observation_space_type": null,
+    "random_initialization_steps": 0,
+    "seed": null,
+    "target_success_rate": 1.0
+}
+
+task_parameters: 
+"TaskParameters" {
+    "apply_stop_condition": false,
+    "checkpoint_restore_dir": null,
+    "checkpoint_save_dir": "./checkpoint",
+    "checkpoint_save_secs": 20,
+    "evaluate_only": false,
+    "experiment_path": "/opt/ml/model",
+    "export_onnx_graph": false,
+    "framework_type": {
+        "__objclass__": "<enum 'Frameworks'>",
+        "_name_": "tensorflow",
+        "_value_": "TensorFlow"
+    },
+    "num_gpu": 1,
+    "seed": null,
+    "task_index": 0,
+    "use_cpu": false
+}
+
+graph_logger: 
+<rl_coach.logger.Logger object at 0x7f329386de48>
+top_level_manager: 
+<rl_coach.level_manager.LevelManager object at 0x7f32936b28d0>
+environments: 
+0: <rl_coach.environments.gym_environment.GymEnvironment object at 0x7f329351c978>
+
+data_store: 
+<markov.s3_boto_data_store.S3BotoDataStore object at 0x7f329351c780>
+checkpoint_saver: 
+<rl_coach.saver.SaverCollection object at 0x7f32936b24a8>
+preset_validation_params: 
+"PresetValidationParameters" {
+    "max_episodes_to_achieve_reward": 10000,
+    "min_reward_threshold": 400,
+    "num_workers": 1,
+    "reward_test_level": null,
+    "test": true,
+    "test_using_a_trace_test": true,
+    "trace_max_env_steps": 5000,
+    "trace_test_levels": null
+}
+
+_phase: 
+RunPhase.UNDEFINED
+data_store_params: 
+<markov.s3_boto_data_store.S3BotoDataStoreParameters object at 0x7f32935113c8>
+checkpoint_id: 
+0
+sess: 
+<tensorflow.python.client.session.Session object at 0x7f32936b2470>
+agent_params: 
+"ClippedPPOAgentParameters" {
+    "algorithm": {
+        "act_for_full_episodes": true,
+        "apply_gradients_every_x_episodes": 5,
+        "beta_entropy": 0.01,
+        "clip_likelihood_ratio_using_epsilon": 0.2,
+        "clipping_decay_schedule": {
+            "current_value": 1.0,
+            "decay_delta": 1e-06,
+            "decay_steps": 1000000,
+            "final_value": 0,
+            "initial_value": 1.0,
+            "__class__": "LinearSchedule"
+        },
+        "discount": 0.999,
+        "distributed_coach_synchronization_type": {
+            "__objclass__": "<enum 'DistributedCoachSynchronizationType'>",
+            "_name_": "SYNC",
+            "_value_": "sync"
+        },
+        "estimate_state_value_using_gae": true,
+        "gae_lambda": 0.95,
+        "heatup_using_network_decisions": false,
+        "in_action_space": null,
+        "load_memory_from_file_path": null,
+        "n_step": -1,
+        "normalization_stats": null,
+        "num_consecutive_playing_steps": {
+            "_num_steps": 20,
+            "__class__": "EnvironmentEpisodes"
+        },
+        "num_consecutive_training_steps": 1,
+        "num_episodes_in_experience_replay": 1000000,
+        "num_steps_between_copying_online_weights_to_target": {
+            "_num_steps": 20,
+            "__class__": "EnvironmentEpisodes"
+        },
+        "optimization_epochs": 10,
+        "policy_gradient_rescaler": {
+            "__objclass__": "<enum 'PolicyGradientRescaler'>",
+            "_name_": "GAE",
+            "_value_": 8
+        },
+        "rate_for_copying_weights_to_target": 1.0,
+        "scale_external_reward_by_intrinsic_reward_value": false,
+        "share_statistics_between_workers": true,
+        "store_transitions_only_when_episodes_are_terminated": false,
+        "supports_parameter_noise": false,
+        "use_accumulated_reward_as_measurement": false,
+        "use_kl_regularization": false,
+        "__class__": "ClippedPPOAlgorithmParameters"
+    },
+    "current_episode": 0,
+    "exploration": {
+        "action_space": {
+            "_high": "array([14.])",
+            "_low": "array([0.])",
+            "_shape": "array([1])",
+            "default_action": 0,
+            "descriptions": {},
+            "num_dimensions": 1,
+            "num_elements": 1,
+            "__class__": "DiscreteActionSpace"
+        },
+        "__class__": "CategoricalParameters"
+    },
+    "full_name_id": "main_level/agent",
+    "input_filter": {
+        "_observation_filters": {
+            "observation": {
+                "to_grayscale": {
+                    "name": null,
+                    "supports_batching": false,
+                    "__class__": "ObservationRGBToYFilter"
+                },
+                "to_uint8": {
+                    "input_high": 255,
+                    "input_low": 0,
+                    "name": null,
+                    "supports_batching": false,
+                    "__class__": "ObservationToUInt8Filter"
+                },
+                "stacking": {
+                    "name": null,
+                    "stack": {},
+                    "stack_size": 1,
+                    "stacking_axis": -1,
+                    "supports_batching": false,
+                    "__class__": "ObservationStackingFilter"
+                }
+            }
+        },
+        "_reward_filters": {},
+        "i_am_a_reference_filter": false,
+        "name": "input_filter",
+        "__class__": "InputFilter"
+    },
+    "is_a_highest_level_agent": true,
+    "is_a_lowest_level_agent": true,
+    "memory": {
+        "load_memory_from_file_path": null,
+        "max_size": [
+            "<MemoryGranularity.Transitions: 0>",
+            1000000
+        ],
+        "n_step": -1,
+        "shared_memory": false,
+        "__class__": "EpisodicExperienceReplayParameters"
+    },
+    "name": "agent",
+    "network_wrappers": {
+        "main": {
+            "adam_optimizer_beta1": 0.9,
+            "adam_optimizer_beta2": 0.999,
+            "async_training": false,
+            "batch_size": 64,
+            "clip_gradients": null,
+            "create_target_network": true,
+            "embedding_merger_type": {
+                "__objclass__": "<enum 'EmbeddingMergerType'>",
+                "_name_": "Concat",
+                "_value_": 0
+            },
+            "force_cpu": false,
+            "framework": {
+                "__objclass__": "<enum 'Frameworks'>",
+                "_name_": "tensorflow",
+                "_value_": "TensorFlow"
+            },
+            "gradients_clipping_method": {
+                "__objclass__": "<enum 'GradientClippingMethod'>",
+                "_name_": "ClipByGlobalNorm",
+                "_value_": 0
+            },
+            "heads_parameters": {
+                "0": {
+                    "activation_function": "relu",
+                    "dense_layer": null,
+                    "loss_weight": 1.0,
+                    "name": "v_head_params",
+                    "num_output_head_copies": 1,
+                    "parameterized_class_name": "VHead",
+                    "rescale_gradient_from_head_by_factor": 1.0,
+                    "__class__": "VHeadParameters"
+                },
+                "1": {
+                    "activation_function": "tanh",
+                    "dense_layer": null,
+                    "loss_weight": 1.0,
+                    "name": "ppo_head_params",
+                    "num_output_head_copies": 1,
+                    "parameterized_class_name": "PPOHead",
+                    "rescale_gradient_from_head_by_factor": 1.0,
+                    "__class__": "PPOHeadParameters"
+                }
+            },
+            "input_embedders_parameters": {
+                "observation": {
+                    "activation_function": "relu",
+                    "batchnorm": false,
+                    "dense_layer": null,
+                    "dropout_rate": 0.0,
+                    "input_clipping": null,
+                    "input_offset": {
+                        "image": 0.0,
+                        "tensor": 0.0,
+                        "vector": 0.0
+                    },
+                    "input_rescaling": {
+                        "image": 255.0,
+                        "tensor": 1.0,
+                        "vector": 1.0
+                    },
+                    "is_training": false,
+                    "name": "embedder",
+                    "scheme": {
+                        "__objclass__": "<enum 'EmbedderScheme'>",
+                        "_name_": "Medium",
+                        "_value_": "Medium"
+                    },
+                    "__class__": "InputEmbedderParameters"
+                }
+            },
+            "l2_regularization": 0,
+            "learning_rate": 0.0003,
+            "learning_rate_decay_rate": 0,
+            "learning_rate_decay_steps": 0,
+            "middleware_parameters": {
+                "activation_function": "relu",
+                "batchnorm": false,
+                "dense_layer": null,
+                "dropout_rate": 0.0,
+                "is_training": false,
+                "name": "middleware_fc_embedder",
+                "parameterized_class_name": "FCMiddleware",
+                "scheme": {
+                    "__objclass__": "<enum 'MiddlewareScheme'>",
+                    "_name_": "Medium",
+                    "_value_": "Medium"
+                },
+                "__class__": "FCMiddlewareParameters"
+            },
+            "optimizer_epsilon": 1e-05,
+            "optimizer_type": "Adam",
+            "replace_mse_with_huber_loss": true,
+            "rms_prop_optimizer_decay": 0.9,
+            "scale_down_gradients_by_number_of_workers_for_sync_training": true,
+            "sess": null,
+            "shared_optimizer": true,
+            "tensorflow_support": true,
+            "use_separate_networks_per_head": true,
+            "__class__": "ClippedPPONetworkParameters"
+        }
+    },
+    "output_filter": {
+        "_action_filters": {},
+        "i_am_a_reference_filter": false,
+        "name": "output_filter",
+        "__class__": "NoOutputFilter"
+    },
+    "pre_network_filter": {
+        "_observation_filters": {},
+        "_reward_filters": {},
+        "i_am_a_reference_filter": false,
+        "name": "pre_network_filter",
+        "__class__": "NoInputFilter"
+    },
+    "task_parameters": {
+        "apply_stop_condition": false,
+        "checkpoint_restore_dir": null,
+        "checkpoint_save_dir": "./checkpoint",
+        "checkpoint_save_secs": 20,
+        "evaluate_only": false,
+        "experiment_path": "/opt/ml/model",
+        "export_onnx_graph": false,
+        "framework_type": {
+            "__objclass__": "<enum 'Frameworks'>",
+            "_name_": "tensorflow",
+            "_value_": "TensorFlow"
+        },
+        "num_gpu": 1,
+        "seed": null,
+        "task_index": 0,
+        "use_cpu": false,
+        "__class__": "TaskParameters"
+    },
+    "visualization": {
+        "add_rendered_image_to_env_response": false,
+        "dump_csv": true,
+        "dump_gifs": false,
+        "dump_in_episode_signals": false,
+        "dump_mp4": false,
+        "dump_parameters_documentation": true,
+        "dump_signals_to_csv_every_x_episodes": 5,
+        "max_fps_for_human_control": 10,
+        "native_rendering": false,
+        "print_networks_summary": false,
+        "render": false,
+        "tensorboard": false,
+        "video_dump_filters": {
+            "0": {
+                "run_phases": {
+                    "0": {
+                        "__objclass__": "<enum 'RunPhase'>",
+                        "_name_": "TEST",
+                        "_value_": "Testing"
+                    }
+                },
+                "__class__": "SelectedPhaseOnlyDumpFilter"
+            },
+            "1": {
+                "max_reward_achieved": -Infinity,
+                "__class__": "MaxDumpFilter"
+            }
+        },
+        "__class__": "VisualizationParameters"
+    }
+}
+
+visualization_parameters: 
+"VisualizationParameters" {
+    "add_rendered_image_to_env_response": false,
+    "dump_csv": true,
+    "dump_gifs": false,
+    "dump_in_episode_signals": false,
+    "dump_mp4": false,
+    "dump_parameters_documentation": true,
+    "dump_signals_to_csv_every_x_episodes": 5,
+    "max_fps_for_human_control": 10,
+    "native_rendering": false,
+    "print_networks_summary": false,
+    "render": false,
+    "tensorboard": false,
+    "video_dump_filters": {
+        "0": {
+            "run_phases": {
+                "0": {
+                    "__objclass__": "<enum 'RunPhase'>",
+                    "_name_": "TEST",
+                    "_value_": "Testing"
+                }
+            },
+            "__class__": "SelectedPhaseOnlyDumpFilter"
+        },
+        "1": {
+            "max_reward_achieved": -Infinity,
+            "__class__": "MaxDumpFilter"
+        }
+    }
+}
+
+heatup_steps: 
+<rl_coach.core_types.EnvironmentSteps object at 0x7f329386d860>
+reset_required: 
+False
+checkpoint_state_updater: 
+None
+total_steps_counters: 
+RunPhase.TRAIN: <rl_coach.core_types.TotalStepsCounter object at 0x7f329386ddd8>
+RunPhase.HEATUP: <rl_coach.core_types.TotalStepsCounter object at 0x7f329386dda0>
+RunPhase.TEST: <rl_coach.core_types.TotalStepsCounter object at 0x7f329386de10>
+
+steps_between_evaluation_periods: 
+<rl_coach.core_types.EnvironmentEpisodes object at 0x7f329386d748>
+level_managers: 
+0: <rl_coach.level_manager.LevelManager object at 0x7f32936b28d0>
+
+name: 
+simple_rl_graph
+evaluation_steps: 
+<rl_coach.core_types.EnvironmentEpisodes object at 0x7f329386d828>
+graph_creation_time: 
+1564996353.3367627
